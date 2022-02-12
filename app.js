@@ -5,6 +5,7 @@ const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/errorController");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
+const compression = require("compression");
 const viewRouter = require("./routes/viewRoutes");
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
@@ -48,6 +49,7 @@ app.use(
     ],
   })
 );
+app.use(compression());
 app.use(express.static(`${__dirname}/public`));
 
 //Routes
